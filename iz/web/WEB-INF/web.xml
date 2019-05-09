@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+
+
+
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/vendor/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/uploads/*</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>by.devilmice.AdminFilter</filter-class>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
+
+
+    <filter>
+        <filter-name>OfflineFilter</filter-name>
+        <filter-class>by.devilmice.OfflineFilter</filter-class>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>OfflineFilter</filter-name>
+        <url-pattern>/</url-pattern>
+        <url-pattern>/news/*</url-pattern>
+        <url-pattern>/profile/*</url-pattern>
+        <url-pattern>/feedback/*</url-pattern>
+        <url-pattern>/notebook/*</url-pattern>
+
+    </filter-mapping>
+
+
+
+    <filter>
+        <filter-name>ProfileFilter</filter-name>
+        <filter-class>by.devilmice.ProfileFilter</filter-class>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>ProfileFilter</filter-name>
+        <url-pattern>/profile</url-pattern>
+    </filter-mapping>
+
+    <error-page>
+        <!-- Missing resource -->
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <!-- Missing login -->
+        <error-code>401</error-code>
+        <location>/global_error.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- Forbidden directory listing -->
+        <error-code>403</error-code>
+        <location>/global_error.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- Uncaught exception -->
+        <error-code>500</error-code>
+        <location>/global_error.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- Unsupported servlet method -->
+        <error-code>503</error-code>
+        <location>/global_error.jsp</location>
+    </error-page>
+
+
+
+    <servlet>
+        <servlet-name>OfflineServlet</servlet-name>
+        <jsp-file>/offline.jsp</jsp-file>
+    </servlet>
+    <!--mapping-->
+    <servlet-mapping>
+        <servlet-name>OfflineServlet</servlet-name>
+        <url-pattern>/offline</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.IndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AdminSettingServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.AdminSettingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminSettingServlet</servlet-name>
+        <url-pattern>/admin/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AdminNewsServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.AdminNewsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminNewsServlet</servlet-name>
+        <url-pattern>/admin/news/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminNotebookServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.AdminNotebookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminNotebookServlet</servlet-name>
+        <url-pattern>/admin/notebook/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AdminOrderServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.AdminOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminOrderServlet</servlet-name>
+        <url-pattern>/admin/order/*</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>AdminUsersServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.AdminUsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminUsersServlet</servlet-name>
+        <url-pattern>/admin/user/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>NewsServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.NewsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewsServlet</servlet-name>
+        <url-pattern>/news</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>NotebookServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.NotebookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NotebookServlet</servlet-name>
+        <url-pattern>/notebook</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.AuthServlet</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/auth</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>RegServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.RegServlet</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegServlet</servlet-name>
+        <url-pattern>/reg</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.ProfileServlet</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.OrderServlet</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>FeedbackServlet</servlet-name>
+        <servlet-class>by.devilmice.servlets.FeedbackServlet</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FeedbackServlet</servlet-name>
+        <url-pattern>/feedback</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+</web-app>
